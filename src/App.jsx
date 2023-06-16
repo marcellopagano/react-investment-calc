@@ -6,7 +6,9 @@ import Table from "./components/Table";
 import styles from "./App.module.css"
 
 function App() {
-  const [result, setResult] = useState([]);
+
+  const [items, setItems] = useState([]);
+  const [initCurrentSavings, setInitCurrentSavings] = useState(0)
 
   const calculateHandler = ({
     "current-savings": currentSavings,
@@ -15,7 +17,7 @@ function App() {
     duration
   }) => {
     expectedReturn = expectedReturn / 100;
-    let initInvest = currentSavings;
+    setInitCurrentSavings(currentSavings)
 
     const yearlyData = [];
 
@@ -27,18 +29,20 @@ function App() {
         yearlyInterest: yearlyInterest,
         savingsEndOfYear: currentSavings,
         yearlyContribution: yearlyContribution,
-        initInvest: initInvest
+        initCurrentSavings
       });
     }
-    setResult(yearlyData);
+    setItems(yearlyData);
   };
 
   return (
     <div className={styles.container}>
       <Header />
       <Form onCalculate={calculateHandler} />
-      {result.length === 0 && <p style={{ textAlign: "center" }}>no data</p>}
-      {result.length !== 0 && <Table resultData={result} />}
+      {items.length 
+        ? <Table resultData={{ items, initCurrentSavings }} />
+        : <p style={{ textAlign: "center" }}>no data</p>
+      }
     </div>
   );
 }

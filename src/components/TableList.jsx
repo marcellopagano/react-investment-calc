@@ -1,34 +1,30 @@
 import PropTypes from "prop-types"
-
-const formatMoney = new Intl.NumberFormat("it-It", {
-    style: "currency",
-    currency: "EUR"
-});
+import { currencyEur } from "../utils/formatCurrency";
 
 export default function TableList({ resultData }) {
 
     TableList.propTypes = {
-        resultData: PropTypes.array
+        resultData: PropTypes.object
     }
 
     return (
         <>
-            {resultData.map((objData) => {
+            {resultData.items.map((objData) => {
                 return (
                     <tr key={objData.year}>
                         <td>{objData.year}</td>
-                        <td>{formatMoney.format(objData.savingsEndOfYear)}</td>
-                        <td>{formatMoney.format(objData.yearlyInterest)}</td>
+                        <td>{currencyEur.format(objData.savingsEndOfYear)}</td>
+                        <td>{currencyEur.format(objData.yearlyInterest)}</td>
                         <td>
-                            {formatMoney.format(
+                            {currencyEur.format(
                                 objData.savingsEndOfYear -
-                                objData.initInvest -
+                                resultData.initCurrentSavings -
                                 objData.yearlyContribution * objData.year
                             )}
                         </td>
                         <td>
-                            {formatMoney.format(
-                                objData.initInvest + objData.yearlyContribution * objData.year
+                            {currencyEur.format(
+                                resultData.initCurrentSavings + objData.yearlyContribution * objData.year
                             )}
                         </td>
                     </tr>

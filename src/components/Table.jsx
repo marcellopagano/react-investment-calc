@@ -2,10 +2,10 @@ import TableList from "./TableList";
 import styles from "./Table.module.css";
 import PropTypes from "prop-types"
 
-export default function Table({ resultData }) {
-    
+export default function Table({resultData}) {
+
     Table.propTypes = {
-        resultData: PropTypes.array
+        resultData: PropTypes.object,
     }
 
     return (
