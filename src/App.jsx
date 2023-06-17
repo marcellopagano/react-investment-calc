@@ -1,9 +1,9 @@
 import { useState } from "react";
-import Header from "./components/Header";
-import Form from "./components/Form";
-import Table from "./components/Table";
+import Header from "./components/Header/Index";
+import Form from "./components/Form/Index";
+import Table from "./components/Table/Index";
 
-import styles from "./App.module.css"
+import styles from "./assets/global.module.css"
 
 function App() {
 
@@ -41,7 +41,7 @@ function App() {
       <Form onCalculate={calculateHandler} />
       {items.length 
         ? <Table resultData={{ items, initCurrentSavings }} />
-        : <p style={{ textAlign: "center" }}>no data</p>
+        : <p className={styles['text-center']}>no data</p>
       }
     </div>
   );

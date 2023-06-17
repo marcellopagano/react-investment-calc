@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { currencyEur } from "../utils/formatCurrency";
+import { currencyEur } from "../../utils/formatCurrency";
 
 export default function TableList({ resultData }) {
 

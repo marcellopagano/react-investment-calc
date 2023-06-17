@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types"
-import styles from "./Form.module.css";
+import styles from "./index.module.css";
 
 export default function Form({ onCalculate }) {
 

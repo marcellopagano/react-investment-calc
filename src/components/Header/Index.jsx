@@ -1,5 +1,5 @@
-import logo from "../assets/investment-calculator-logo.jpg";
-import styles from "./Header.module.css";
+import logo from "../../assets/investment-calculator-logo.jpg";
+import styles from "./index.module.css";
 
 export default function Header() {
   return (
